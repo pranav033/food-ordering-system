@@ -4,7 +4,6 @@ package org.example.foodorderingsystem.repository;
 
 import org.example.foodorderingsystem.exceptions.MenuItemNotFoundException;
 import org.example.foodorderingsystem.exceptions.RestaurantNotFoundException;
-import org.example.foodorderingsystem.models.MenuItem;
 import org.example.foodorderingsystem.models.Restaurant;
 import org.springframework.stereotype.Repository;
 
