@@ -32,4 +32,14 @@ public class RestaurantRepository {
     public List<Restaurant> getAllRestaurants() {
         return restaurants;
     }
+
+
+    public Restaurant getOneRestaurant(String restaurantName)
+    {
+        Restaurant restaurant = restaurants.stream()
+                .filter(r -> r.getName().equalsIgnoreCase(restaurantName))
+                .findFirst()
+                .orElseThrow(() -> new RestaurantNotFoundException("Restaurant not found: " + restaurantName));
+        return restaurant;
+    }
 }

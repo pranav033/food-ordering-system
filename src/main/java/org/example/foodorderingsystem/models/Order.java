@@ -21,13 +21,8 @@ public class Order {
     private Restaurant assignedRestaurant;
     private boolean completed;
 
-    public Order(String user, Map<String, Integer> items, Restaurant assignedRestaurant) {
-        this.user = user;
-        this.items = items;
-        this.assignedRestaurant = assignedRestaurant;
-        this.completed = false;
+    public Order() {
     }
-
 
     public String getUser() {
         return user;
@@ -59,5 +54,12 @@ public class Order {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    public Order(String user, Map<String, Integer> items, Restaurant assignedRestaurant) {
+        this.user = user;
+        this.items = items;
+        this.assignedRestaurant = assignedRestaurant;
+        this.completed = false;
     }
 }

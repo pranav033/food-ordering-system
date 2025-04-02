@@ -8,10 +8,7 @@ public class MenuItem {
     private String name;
     private int price;
 
-    public MenuItem(String name, int price) {
-        this.name = name;
-        this.price = price;
-    }
+
 
     public String getName() {
         return name;
@@ -19,6 +16,14 @@ public class MenuItem {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public MenuItem(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public MenuItem() {
     }
 
     @Override

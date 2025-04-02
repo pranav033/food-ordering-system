@@ -12,12 +12,7 @@ public class Restaurant {
     private Map<String, MenuItem> menu;
     private int currentOrders;
 
-    public Restaurant(String name, int maxOrders, double rating, Map<String, MenuItem> menu) {
-        this.name = name;
-        this.maxOrders = maxOrders;
-        this.rating = rating;
-        this.menu = menu;
-        this.currentOrders = 0;
+    public Restaurant() {
     }
 
     @Override
@@ -69,5 +64,13 @@ public class Restaurant {
 
     public void setCurrentOrders(int currentOrders) {
         this.currentOrders = currentOrders;
+    }
+
+    public Restaurant(String name, int maxOrders, double rating, Map<String, MenuItem> menu) {
+        this.name = name;
+        this.maxOrders = maxOrders;
+        this.rating = rating;
+        this.menu = menu;
+        this.currentOrders = 0;
     }
 }
