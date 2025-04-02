@@ -34,6 +34,13 @@ public class FoodorderingsystemApplication {
         restaurantService.addRestaurant("R2", 5, 4.0);
         restaurantService.addRestaurant("R3", 1, 4.9);
 
+        try{
+            restaurantService.addRestaurant("",6,4.6);
+        }
+        catch (Exception e) {
+            System.out.println(globalExceptionHandler.exceptionHandler(e));
+        }
+
         // Updating Menus
         restaurantService.addMenu("R1", "Veg Biryani", 100);
         restaurantService.addMenu("R1", "Chicken Biryani", 150);
@@ -81,7 +88,7 @@ public class FoodorderingsystemApplication {
 
 
             // Completing Order
-            orderService.completeOrder("Ashwin");
+           // orderService.completeOrder("Ashwin");
 
             // Placing Another Order
         try{

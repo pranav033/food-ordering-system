@@ -4,6 +4,7 @@ package org.example.foodorderingsystem.repository;
 
 import org.example.foodorderingsystem.exceptions.MenuItemNotFoundException;
 import org.example.foodorderingsystem.exceptions.RestaurantNotFoundException;
+import org.example.foodorderingsystem.exceptions.UserInputException;
 import org.example.foodorderingsystem.models.Restaurant;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +17,7 @@ public class RestaurantRepository {
     private final List<Restaurant> restaurants = new ArrayList<>();
 
     public void addRestaurant(String name, int maxOrders, double rating) {
+        if(name==null || name.isEmpty() || maxOrders<0 || rating<0) throw new UserInputException("Please provide valid input.");
         restaurants.add(new Restaurant(name, maxOrders, rating, new HashMap<>()));
     }
 
