@@ -10,7 +10,6 @@ import java.util.List;
 
 @Service
 public class RestaurantService {
-    private final List<Restaurant> restaurants = new ArrayList<>();
     private final RestaurantRepository restaurantRepo;
 
     public RestaurantService(RestaurantRepository restaurantRepo) {
@@ -25,7 +24,12 @@ public class RestaurantService {
         restaurantRepo.updateMenu(restaurantName, itemName, price);
     }
 
+    public void addMenu(String restaurantName, String itemName, int price) {
+        restaurantRepo.addMenu(restaurantName, itemName, price);
+    }
+
+
     public List<Restaurant> getAllRestaurants() {
-        return restaurants;
+        return restaurantRepo.getAllRestaurants();
     }
 }

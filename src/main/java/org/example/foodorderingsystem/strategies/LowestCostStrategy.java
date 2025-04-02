@@ -25,7 +25,7 @@ public class LowestCostStrategy implements SelectionStrategy {
 
     private int calculateOrderCost(Restaurant restaurant, Order order) {
         return order.getItems().entrySet().stream()
-                .mapToInt(entry -> restaurant.getMenu().get(entry.getKey()).getPrice() * entry.getValue())
+                .mapToInt(entry -> restaurant.getMenu().get(entry.getKey()) * entry.getValue())
                 .sum();
     }
 }

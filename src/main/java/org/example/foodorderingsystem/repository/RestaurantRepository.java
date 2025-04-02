@@ -2,6 +2,7 @@ package org.example.foodorderingsystem.repository;
 
 
 
+import org.example.foodorderingsystem.exceptions.MenuItemNotFoundException;
 import org.example.foodorderingsystem.exceptions.RestaurantNotFoundException;
 import org.example.foodorderingsystem.models.MenuItem;
 import org.example.foodorderingsystem.models.Restaurant;
@@ -19,14 +20,27 @@ public class RestaurantRepository {
         restaurants.add(new Restaurant(name, maxOrders, rating, new HashMap<>()));
     }
 
-    public void updateMenu(String restaurantName, String itemName, int price) {
+    public void addMenu(String restaurantName, String itemName, int price) {
         Restaurant restaurant = restaurants.stream()
                 .filter(r -> r.getName().equalsIgnoreCase(restaurantName))
                 .findFirst()
                 .orElseThrow(() -> new RestaurantNotFoundException("Restaurant not found: " + restaurantName));
 
         // Menu item cannot be removed, only updated
-        restaurant.getMenu().put(itemName, new MenuItem(itemName, price));
+        restaurant.getMenu().put(itemName, price);
+    }
+
+
+    public void updateMenu(String restaurantName, String itemName, int price) {
+        Restaurant restaurant = restaurants.stream()
+                .filter(r -> r.getName().equalsIgnoreCase(restaurantName))
+                .findFirst()
+                .orElseThrow(() -> new RestaurantNotFoundException("Restaurant not found: " + restaurantName));
+
+        if(!restaurant.getMenu().containsKey(itemName)) throw new MenuItemNotFoundException("Given menu item not found in the restaurant");
+
+        // Menu item cannot be removed, only updated
+        restaurant.getMenu().put(itemName, price);
     }
 
     public List<Restaurant> getAllRestaurants() {

@@ -33,16 +33,16 @@ public class FoodorderingsystemApplication {
         restaurantService.addRestaurant("R3", 1, 4.9);
 
         // Updating Menus
-        restaurantService.updateMenu("R1", "Veg Biryani", 100);
-        restaurantService.updateMenu("R1", "Chicken Biryani", 150);
-        restaurantService.updateMenu("R2", "Idli", 10);
-        restaurantService.updateMenu("R2", "Dosa", 50);
-        restaurantService.updateMenu("R2", "Veg Biryani", 80);
-        restaurantService.updateMenu("R2", "Chicken Biryani", 175);
-        restaurantService.updateMenu("R3", "Idli", 15);
-        restaurantService.updateMenu("R3", "Dosa", 30);
-        restaurantService.updateMenu("R3", "Gobi Manchurian", 150);
-        restaurantService.updateMenu("R3", "Chicken Biryani", 175);
+        restaurantService.addMenu("R1", "Veg Biryani", 100);
+        restaurantService.addMenu("R1", "Chicken Biryani", 150);
+        restaurantService.addMenu("R2", "Idli", 10);
+        restaurantService.addMenu("R2", "Dosa", 50);
+        restaurantService.addMenu("R2", "Veg Biryani", 80);
+        restaurantService.addMenu("R2", "Chicken Biryani", 175);
+        restaurantService.addMenu("R3", "Idli", 15);
+        restaurantService.addMenu("R3", "Dosa", 30);
+        restaurantService.addMenu("R3", "Gobi Manchurian", 150);
+        restaurantService.addMenu("R3", "Chicken Biryani", 175);
 
         // Placing Orders
         try {

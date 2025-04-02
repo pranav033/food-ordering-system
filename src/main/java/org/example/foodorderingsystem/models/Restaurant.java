@@ -9,7 +9,7 @@ public class Restaurant {
     private String name;
     private int maxOrders;
     private double rating;
-    private Map<String, MenuItem> menu;
+    private Map<String, Integer> menu;
     private int currentOrders;
 
     public Restaurant() {
@@ -50,11 +50,11 @@ public class Restaurant {
         this.rating = rating;
     }
 
-    public Map<String, MenuItem> getMenu() {
+    public Map<String, Integer> getMenu() {
         return menu;
     }
 
-    public void setMenu(Map<String, MenuItem> menu) {
+    public void setMenu(Map<String, Integer> menu) {
         this.menu = menu;
     }
 
@@ -66,7 +66,7 @@ public class Restaurant {
         this.currentOrders = currentOrders;
     }
 
-    public Restaurant(String name, int maxOrders, double rating, Map<String, MenuItem> menu) {
+    public Restaurant(String name, int maxOrders, double rating, Map<String, Integer> menu) {
         this.name = name;
         this.maxOrders = maxOrders;
         this.rating = rating;
