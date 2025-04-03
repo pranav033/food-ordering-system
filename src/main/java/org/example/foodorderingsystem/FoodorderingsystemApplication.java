@@ -1,21 +1,18 @@
 package org.example.foodorderingsystem;
 
 import org.example.foodorderingsystem.exceptions.GlobalExceptionHandler;
-import org.example.foodorderingsystem.exceptions.MenuItemNotFoundException;
-import org.example.foodorderingsystem.exceptions.OrderAssignmentException;
-import org.example.foodorderingsystem.exceptions.OrderNotFoundException;
-import org.example.foodorderingsystem.models.Restaurant;
 import org.example.foodorderingsystem.repository.OrderRepository;
 import org.example.foodorderingsystem.repository.RestaurantRepository;
 import org.example.foodorderingsystem.services.OrderService;
 import org.example.foodorderingsystem.services.RestaurantService;
+import org.example.foodorderingsystem.services.impl.OrderServiceImpl;
+import org.example.foodorderingsystem.services.impl.RestaurantServiceImpl;
 import org.example.foodorderingsystem.strategies.HighestRatingStrategy;
 import org.example.foodorderingsystem.strategies.LowestCostStrategy;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @SpringBootApplication
@@ -28,8 +25,8 @@ public class FoodorderingsystemApplication {
         RestaurantRepository restaurantRepo = new RestaurantRepository();
         OrderRepository orderRepository = new OrderRepository();
         GlobalExceptionHandler globalExceptionHandler = new GlobalExceptionHandler();
-        OrderService orderService = new OrderService(orderRepository, restaurantRepo);
-        RestaurantService restaurantService = new RestaurantService(restaurantRepo);
+        OrderService orderService = new OrderServiceImpl(orderRepository, restaurantRepo);
+        RestaurantService restaurantService = new RestaurantServiceImpl(restaurantRepo);
 
         // Onboarding Restaurants
         restaurantService.addRestaurant("R1", 5, 4.5);
