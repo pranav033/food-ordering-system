@@ -14,12 +14,8 @@ public class HighestRatingStrategy implements SelectionStrategy {
     public Restaurant selectRestaurant(List<Restaurant> restaurants, Order order) {
         return restaurants.stream()
                 .filter(r -> r.getCurrentOrders() < r.getMaxOrders())
-               // .filter(r -> canFulfillOrder(r, order.getItems()))
                 .max(Comparator.comparingDouble(Restaurant::getRating))
                 .orElse(null);
     }
 
-    private boolean canFulfillOrder(Restaurant restaurant, Map<String, Integer> orderItems) {
-        return orderItems.keySet().stream().allMatch(restaurant.getMenu()::containsKey);
-    }
 }

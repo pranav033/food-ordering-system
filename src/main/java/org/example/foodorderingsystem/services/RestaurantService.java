@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface RestaurantService {
 
-    public void addRestaurant(String name, int maxOrders, double rating);
+    void addRestaurant(String name, int maxOrders, double rating);
 
-    public void updateMenu(String restaurantName, String itemName, int price);
+    void updateMenu(String restaurantName, String itemName, int price);
 
-    public void addMenu(String restaurantName, String itemName, int price);
+    void addMenu(String restaurantName, String itemName, int price);
 
-    public List<Restaurant> getAllRestaurants();
+    List<Restaurant> getAllRestaurants();
 
-    public Restaurant getOneRestaurant(String restaurantName);
+    Restaurant getOneRestaurant(String restaurantName);
 }

@@ -22,10 +22,14 @@ public class RestaurantRepository {
     }
 
     public void addMenu(String restaurantName, String itemName, int price) {
+
+        if(restaurantName.isEmpty() ||itemName.isEmpty() || price<0) throw new UserInputException("Please enter valid inputs");
+
         Restaurant restaurant = restaurants.stream()
                 .filter(r -> r.getName().equalsIgnoreCase(restaurantName))
                 .findFirst()
                 .orElseThrow(() -> new RestaurantNotFoundException("Restaurant not found: " + restaurantName));
+
 
         // Menu item cannot be removed, only updated
         restaurant.getMenu().put(itemName, price);
@@ -39,7 +43,7 @@ public class RestaurantRepository {
                 .orElseThrow(() -> new RestaurantNotFoundException("Restaurant not found: " + restaurantName));
 
         if(!restaurant.getMenu().containsKey(itemName)) throw new MenuItemNotFoundException("Given menu item not found in the restaurant");
-
+        if(price<0) throw new UserInputException("Please enter valid inputs.");
         // Menu item cannot be removed, only updated
         restaurant.getMenu().put(itemName, price);
     }
