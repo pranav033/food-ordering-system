@@ -51,10 +51,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public void completeOrder(String user, String restaurantName) {
-       orderRepo.completeOrder(user,restaurantName);
+
         List<User> allUsers = userRepository.getAllUsers();
         User user1 = allUsers.stream().filter(u -> u.getUserName().equals(user)).findAny()
                 .orElse(null);
         if(user1==null) throw new UserNotFoundException("User not found");
+        orderRepo.completeOrder(user,restaurantName);
     }
 }
