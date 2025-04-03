@@ -32,4 +32,9 @@ public class RestaurantService {
     public List<Restaurant> getAllRestaurants() {
         return restaurantRepo.getAllRestaurants();
     }
+
+    public Restaurant getOneRestaurant(String restaurantName)
+    {
+        return restaurantRepo.getOneRestaurant(restaurantName);
+    }
 }

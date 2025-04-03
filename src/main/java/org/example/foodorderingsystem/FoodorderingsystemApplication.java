@@ -4,6 +4,7 @@ import org.example.foodorderingsystem.exceptions.GlobalExceptionHandler;
 import org.example.foodorderingsystem.exceptions.MenuItemNotFoundException;
 import org.example.foodorderingsystem.exceptions.OrderAssignmentException;
 import org.example.foodorderingsystem.exceptions.OrderNotFoundException;
+import org.example.foodorderingsystem.models.Restaurant;
 import org.example.foodorderingsystem.repository.OrderRepository;
 import org.example.foodorderingsystem.repository.RestaurantRepository;
 import org.example.foodorderingsystem.services.OrderService;
@@ -14,6 +15,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @SpringBootApplication
@@ -34,14 +36,14 @@ public class FoodorderingsystemApplication {
         restaurantService.addRestaurant("R2", 5, 4.0);
         restaurantService.addRestaurant("R3", 1, 4.9);
 
-        try{
-            restaurantService.addRestaurant("",6,4.6);
-        }
-        catch (Exception e) {
-            System.out.println(globalExceptionHandler.exceptionHandler(e));
-        }
+//        try{
+//            restaurantService.addRestaurant("",6,4.6);
+//        }
+//        catch (Exception e) {
+//            System.out.println(globalExceptionHandler.exceptionHandler(e));
+//        }
 
-        // Updating Menus
+        // adding menus
         restaurantService.addMenu("R1", "Veg Biryani", 100);
         restaurantService.addMenu("R1", "Chicken Biryani", 150);
         restaurantService.addMenu("R2", "Idli", 10);
@@ -53,13 +55,26 @@ public class FoodorderingsystemApplication {
         restaurantService.addMenu("R3", "Gobi Manchurian", 150);
         restaurantService.addMenu("R3", "Chicken Biryani", 175);
 
-        try{
-            restaurantService.updateMenu("R2","adc",45);
-        }
-        catch(Exception e)
+        restaurantService.addMenu("R1","Chicken 65",250);
+        try
         {
-            System.out.println(globalExceptionHandler.exceptionHandler(e));
+            restaurantService.updateMenu("R2","Chicken Biryani",150);
         }
+        catch (Exception e)
+        {
+                globalExceptionHandler.exceptionHandler(e);
+        }
+
+//        try{
+//            restaurantService.updateMenu("R2","adc",45);
+//        }
+//        catch(Exception e)
+//        {
+//            System.out.println(globalExceptionHandler.exceptionHandler(e));
+//        }
+//
+//        List<Restaurant> allRestaurants = restaurantService.getAllRestaurants();
+//        System.out.println(allRestaurants);
 
         // Placing Orders
         try {
@@ -67,6 +82,17 @@ public class FoodorderingsystemApplication {
             order1Items.put("Idli", 3);
             order1Items.put("Dosa", 1);
             System.out.println(orderService.placeOrder("Ashwin", order1Items, new LowestCostStrategy()));
+        }
+        catch (Exception e)
+        {
+            globalExceptionHandler.exceptionHandler(e);
+        }
+
+        try{
+            Map<String, Integer> order3Items = new HashMap<>();
+            order3Items.put("Idli", 3);
+            order3Items.put("Dosa", 1);
+            System.out.println(orderService.placeOrder("Harish", order3Items, new LowestCostStrategy()));
         }
         catch (Exception e)
         {
@@ -89,18 +115,41 @@ public class FoodorderingsystemApplication {
 
             // Completing Order
            // orderService.completeOrder("Ashwin");
-
-            // Placing Another Order
         try{
-            Map<String, Integer> order3Items = new HashMap<>();
-            order3Items.put("Idli", 3);
-            order3Items.put("Dosa", 1);
-            System.out.println(orderService.placeOrder("Harish", order3Items, new LowestCostStrategy()));
+            orderService.completeOrder("Ashwin","R3");
         }
         catch (Exception e)
         {
             globalExceptionHandler.exceptionHandler(e);
         }
+
+
+        try {
+            Map<String, Integer> order4Items = new HashMap<>();
+            order4Items.put("Idli", 3);
+            order4Items.put("Dosa", 1);
+            System.out.println(orderService.placeOrder("Harish", order4Items, new LowestCostStrategy()));
+        }
+        catch (Exception e)
+        {
+            globalExceptionHandler.exceptionHandler(e);
+        }
+
+
+        try {
+            Map<String, Integer> order5Items = new HashMap<>();
+            order5Items.put("Idli", 3);
+            order5Items.put("Paneer Tikka", 1);
+            System.out.println(orderService.placeOrder("Diya", order5Items, new LowestCostStrategy()));
+        }
+        catch (Exception e)
+        {
+            globalExceptionHandler.exceptionHandler(e);
+        }
+
+
+            // Placing Another Order
+
 
 
     }

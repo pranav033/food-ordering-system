@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 public class GlobalExceptionHandler {
 
 
-    public String exceptionHandler(Exception ex)
+    public void exceptionHandler(Exception ex)
     {
-        return ex.getClass().getSimpleName() +" occured.\nMessage -> "+ex.getMessage();
+        System.out.println(ex.getClass().getSimpleName() +" occured.\nMessage -> "+ex.getMessage());
     }
 }

@@ -39,13 +39,7 @@ public class OrderService {
         return "Order assigned to " + assignedRestaurant.getName();
     }
 
-    public void completeOrder(String user) {
-        Order order = orderRepo.getOrders().stream()
-                .filter(o -> o.getUser().equals(user) && !o.isCompleted())
-                .findFirst()
-                .orElseThrow(() -> new OrderNotFoundException("No ongoing order found for user: " + user));
-
-        order.setCompleted(true);
-        order.getAssignedRestaurant().setCurrentOrders(order.getAssignedRestaurant().getCurrentOrders() - 1);
+    public void completeOrder(String user, String restaurantName) {
+       orderRepo.completeOrder(user,restaurantName);
     }
 }
