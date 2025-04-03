@@ -34,7 +34,7 @@ public class OrderServiceImpl implements OrderService {
         User user1 = allUsers.stream().filter(u -> u.getUserName().equals(user)).findAny()
                 .orElse(null);
         if(user1==null) throw new UserNotFoundException("User not found");
-        // Ensure all items are available in a single restaurant
+        // assign a restaurant
         Restaurant assignedRestaurant = strategy.selectRestaurant(restaurantRepo.getAllRestaurants(), new Order(user, items, null));
 
         if (assignedRestaurant == null)

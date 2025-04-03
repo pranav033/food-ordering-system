@@ -8,9 +8,9 @@ import java.util.Map;
 
 public interface OrderService {
 
-    public String placeOrder(String user, Map<String, Integer> items, SelectionStrategy strategy);
+    String placeOrder(String user, Map<String, Integer> items, SelectionStrategy strategy);
 
-    public void completeOrder(String user, String restaurantName);
+    void completeOrder(String user, String restaurantName);
 
 
 }
